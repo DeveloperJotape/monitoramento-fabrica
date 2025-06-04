@@ -6,7 +6,13 @@ const repoName = 'freeCodeCamp';
 
 // Função que retorna os dados do repositório
 const getRepositoryInfo = async (req, res) => {
+
+    
+
   try {
+
+    const githubApi = 'https://api.github.com';
+
     // Busca informações do repositório
     const repoResponse = await axios.get(`https://api.github.com/repos/${repoOwner}/${repoName}`);
 
@@ -19,6 +25,11 @@ const getRepositoryInfo = async (req, res) => {
     // Contagem de branches
     const branchesResponse = await axios.get(`${githubApi}/repos/${repoOwner}/${repoName}/branches`);
     const totalBranches = branchesResponse.data.length;
+
+    // Dados para resposta
+    const dadosRepo = repoResponse.data;
+    const commits = commitsResponse.data;
+    const colaboradores = collaboratorsResponse.data;
 
     const projeto = {
       nomeDoProjeto: repoResponse.data.name,
