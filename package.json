@@ -1,16 +1,34 @@
 {
-  "name": "monitoramento",
+  "name": "monitoramento-fabrica",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Sistema completo de monitoramento de repositórios GitHub - Projeto Acadêmico",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"npm run dev:back\" \"npm run dev:front\"",
+    "dev:back": "cd back && npm run dev",
+    "dev:front": "cd front && npm run dev",
+    "start": "concurrently \"npm run start:back\" \"npm run start:front\"",
+    "start:back": "cd back && npm start",
+    "start:front": "cd front && npm start",
+    "install:all": "npm run install:back && npm run install:front",
+    "install:back": "cd back && npm install",
+    "install:front": "cd front && npm install",
+    "build": "npm run build:front",
+    "build:front": "cd front && npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "axios": "^1.9.0",
-    "express": "^5.1.0"
+  "keywords": [
+    "github",
+    "monitor",
+    "nodejs",
+    "nextjs",
+    "typescript",
+    "academic-project"
+  ],
+  "author": "Equipe de Desenvolvimento",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
-}
+} 

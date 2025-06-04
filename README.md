@@ -1,140 +1,155 @@
+# 🔍 Monitor de Repositórios GitHub
 
-# 📊 Software Monitor API
+Sistema completo de monitoramento de repositórios GitHub desenvolvido para projeto acadêmico, composto por um backend em Node.js/Express e frontend em Next.js.
 
-Este é um sistema simples, desenvolvido com **Node.js**, que monitora uma fábrica de software fixa no GitHub. Ele consulta um repositório predeterminado e retorna informações essenciais como nome do projeto, autor, colaboradores, estatísticas de commits e mais.
+## 📁 Estrutura do Projeto
+
+```
+monitoramento-fabrica/
+├── back/                 # Backend (Node.js + Express)
+│   ├── controllers/      # Controladores da API
+│   ├── routes/          # Rotas da API
+│   ├── app.js           # Arquivo principal do servidor
+│   └── package.json     # Dependências do backend
+├── front/               # Frontend (Next.js + TypeScript)
+│   ├── src/
+│   │   ├── components/  # Componentes React
+│   │   ├── pages/       # Páginas Next.js
+│   │   ├── services/    # Serviços de API
+│   │   └── types/       # Tipos TypeScript
+│   └── package.json     # Dependências do frontend
+└── README.md            # Este arquivo
+```
+
+## 🚀 Como Executar
+
+1. **Instale todas as dependências do projeto (backend e frontend juntos):**
+   ```bash
+   npm install
+   ```
+   > Isso instala automaticamente as dependências do backend (`back/`) e do frontend (`front/`).
+
+2. **Inicie o backend e o frontend ao mesmo tempo:**
+   ```bash
+   npm run dev
+   ```
+   > O backend ficará disponível em `http://localhost:3000` e o frontend em `http://localhost:3001`.
 
 ---
 
-## 🚀 Tecnologias utilizadas
+Se quiser rodar apenas um dos projetos:
 
+- **Somente o backend:**
+  ```bash
+  npm run dev:back
+  ```
+- **Somente o frontend:**
+  ```bash
+  npm run dev:front
+  ```
+
+## 🔧 Funcionalidades
+
+### Backend
+- ✅ API REST para monitoramento de repositórios GitHub
+- ✅ Endpoint `/monitor` que retorna dados do repositório
+- ✅ Health check endpoint `/`
+- ✅ CORS configurado para comunicação com frontend
+- ✅ Tratamento de erros
+
+### Frontend
+- ✅ Dashboard moderno e responsivo
+- ✅ Interface desenvolvida com Next.js + TypeScript
+- ✅ Estilização com TailwindCSS
+- ✅ Componentes reutilizáveis
+- ✅ Estado de loading e tratamento de erros
+- ✅ Atualização em tempo real dos dados
+- ✅ Design adaptado para dispositivos móveis
+
+## 📊 Dados Monitorados
+
+O sistema monitora e exibe:
+- Nome do projeto
+- Autor/proprietário do repositório
+- Lista de colaboradores
+- Quantidade total de commits
+- Último commit realizado
+
+## 🛠️ Tecnologias Utilizadas
+
+### Backend
 - Node.js
-- Express
-- Axios (para consumo da API do GitHub)
+- Express.js
+- Axios (para requisições HTTP)
+- CORS
 
----
+### Frontend
+- Next.js 15
+- TypeScript
+- TailwindCSS
+- Axios
+- Lucide React (ícones)
 
-## 📦 Como executar o projeto
+## 📝 API Routes
 
-### 1. Clone o repositório
+### Backend Endpoints
 
-```bash
-git clone https://github.com/DeveloperJotape/monitoramento-fabrica
-cd monitoramento-fabrica
-```
-
-### 2. Instale as dependências
-
-```bash
-npm install
-```
-
-### 3. Inicie o servidor
-
-```bash
-npm start
-```
-
-A API estará disponível localmente em:  
-👉 `http://localhost:3000/monitor`
-
----
-
-## 📡 Como funciona
-
-Ao acessar a rota `/monitor`, a API:
-
-1. Consulta um repositório **pré-definido** no GitHub (URL fixa no código).
-2. Coleta os seguintes dados:
-   - Nome do projeto
-   - Autor
-   - Colaboradores
-   - Usuário que mais realizou commits
-   - Quantidade total de commits
-   - Último commit (mensagem e data)
-   - Linguagem principal do projeto
-   - Quantidade de estrelas
-   - Quantidade de forks (copias)
-   - Número de issues abertas
-   - Total de branches
-
----
-
-## 📥 Exemplo de resposta JSON
-
+#### `GET /`
+Health check da API
 ```json
 {
-	"nomeDoProjeto": "freeCodeCamp",
-	"autor": "freeCodeCamp",
-	"colaboradores": [
-		"camperbot",
-		"raisedadead",
-		"ojeytonwilliams",
-		"renovate[bot]",
-		"sahat",
-		"renovate-bot",
-		"Bouncey",
-		"terakilobyte",
-		"SaintPeter",
-		"ltegman",
-		"moT01",
-		"benmcmahon100",
-		"erictleung",
-		"ahmaxed",
-		"QuincyLarson",
-		"BerkeleyTrue",
-		"dependabot[bot]",
-		"RandellDawson",
-		"bugron",
-		"dhcodes",
-		"ShaunSHamilton",
-		"scissorsneedfoodtoo",
-		"Sembauke",
-		"huyenltnguyen",
-		"abhisekp",
-		"ValeraS",
-		"ilenia-magoni",
-		"a2937",
-		"Greenheart",
-		"gikf"
-	],
-	"quantidadeDeCommits": 30,
-	"usuarioMaisAtivo": "camperbot",
-	"dataUltimoCommit": "2025-06-04T10:13:21Z",
-	"linguagem": "TypeScript",
-	"estrelas": 419910,
-	"copias": 40315,
-	"bugs": 307,
-	"totalBranches": 3
+  "message": "API de Monitoramento de Repositórios funcionando!",
+  "version": "1.0.0"
 }
 ```
 
----
+#### `GET /monitor`
+Retorna dados do repositório monitorado
+```json
+{
+  "nomeDoProjeto": "freeCodeCamp",
+  "autor": "freeCodeCamp",
+  "colaboradores": ["quincy", "gikf", "..."],
+  "quantidadeDeCommits": 30,
+  "ultimoCommit": "feat: add new feature"
+}
+```
 
-## 🧪 Como testar no Insomnia
+## 🎯 Objetivos Acadêmicos
 
-### Passo a passo:
+Este projeto demonstra:
+- Arquitetura cliente-servidor
+- Desenvolvimento full-stack
+- Consumo de APIs externas (GitHub API)
+- Interface de usuário moderna e responsiva
+- Boas práticas de desenvolvimento
+- Organização e estruturação de projetos
 
-1. Abra o **Insomnia**
-2. Vá em **Create > Request Collection > HTTP Request > From File**
-3. Selecione a requisição de tipo **GET**
-4. Adicione a url **http://localhost:3000/monitor** e clique em **SEND**
+## 📚 Para Desenvolvimento
 
-A resposta será exibida em formato JSON com todos os dados monitorados.
+### Estrutura de Pastas Detalhada
 
----
+```
+back/
+├── controllers/
+│   └── monitorController.js     # Lógica de negócio
+├── routes/
+│   └── monitorRoute.js          # Definição de rotas
+└── app.js                       # Configuração do servidor
 
-## 🛠 Como alterar o repositório monitorado
-
-No arquivo `monitorController.js`, altere diretamente as variáveis:
-
-```js
-const repoOwner = 'usuario-do-github';
-const repoName = 'nome-do-repositorio';
+front/src/
+├── components/
+│   ├── StatCard.tsx             # Cartão de estatísticas
+│   ├── CollaboratorsList.tsx    # Lista de colaboradores
+│   └── LoadingSpinner.tsx       # Componente de loading
+├── pages/
+│   └── index.tsx                # Página principal
+├── services/
+│   └── api.ts                   # Configuração do Axios
+└── types/
+    └── index.ts                 # Definições TypeScript
 ```
 
 ---
 
-
-## 👨‍💻 Autores
-
-Desenvolvido por João Pedro, Luís Antônio, Paulo, Matheus, Daniel e Roberto.
+💡 **Projeto desenvolvido para fins acadêmicos - Demonstração de conceitos de desenvolvimento web full-stack**
