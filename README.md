@@ -1,24 +1,139 @@
+
 # 📊 Software Monitor API
 
-Este projeto é uma API simples desenvolvida em Node.js para monitorar um repositório do GitHub fixo, retornando informações básicas sobre o projeto.
+Este é um sistema simples, desenvolvido com **Node.js**, que monitora uma fábrica de software fixa no GitHub. Ele consulta um repositório predeterminado e retorna informações essenciais como nome do projeto, autor, colaboradores, estatísticas de commits e mais.
 
 ---
 
-## ✅ Funcionalidades
+## 🚀 Tecnologias utilizadas
 
-A API retorna os seguintes dados:
-- Nome do projeto
-- Autor do repositório
-- Lista de colaboradores
-- Quantidade de commits
-- Última mensagem de commit
+- Node.js
+- Express
+- Axios (para consumo da API do GitHub)
 
 ---
 
-## 🚀 Como executar
+## 📦 Como executar o projeto
 
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/software-monitor.git
-cd software-monitor
+git clone https://github.com/seu-usuario/monitoramento-fabrica
+cd monitoramento-fabrica
+```
+
+### 2. Instale as dependências
+
+```bash
+npm install
+```
+
+### 3. Inicie o servidor
+
+```bash
+npm start
+```
+
+A API estará disponível localmente em:  
+👉 `http://localhost:3000/monitor`
+
+---
+
+## 📡 Como funciona
+
+Ao acessar a rota `/monitor`, a API:
+
+1. Consulta um repositório **pré-definido** no GitHub (URL fixa no código).
+2. Coleta os seguintes dados:
+   - Nome do projeto
+   - Autor
+   - Colaboradores
+   - Usuário que mais realizou commits
+   - Quantidade total de commits
+   - Último commit (mensagem e data)
+   - Linguagem principal do projeto
+   - Quantidade de estrelas
+   - Quantidade de forks (copias)
+   - Número de issues abertas
+   - Total de branches
+
+---
+
+## 📥 Exemplo de resposta JSON
+
+```json
+{
+	"nomeDoProjeto": "freeCodeCamp",
+	"autor": "freeCodeCamp",
+	"colaboradores": [
+		"camperbot",
+		"raisedadead",
+		"ojeytonwilliams",
+		"renovate[bot]",
+		"sahat",
+		"renovate-bot",
+		"Bouncey",
+		"terakilobyte",
+		"SaintPeter",
+		"ltegman",
+		"moT01",
+		"benmcmahon100",
+		"erictleung",
+		"ahmaxed",
+		"QuincyLarson",
+		"BerkeleyTrue",
+		"dependabot[bot]",
+		"RandellDawson",
+		"bugron",
+		"dhcodes",
+		"ShaunSHamilton",
+		"scissorsneedfoodtoo",
+		"Sembauke",
+		"huyenltnguyen",
+		"abhisekp",
+		"ValeraS",
+		"ilenia-magoni",
+		"a2937",
+		"Greenheart",
+		"gikf"
+	],
+	"quantidadeDeCommits": 30,
+	"usuarioMaisAtivo": "camperbot",
+	"dataUltimoCommit": "2025-06-04T10:13:21Z",
+	"linguagem": "TypeScript",
+	"estrelas": 419910,
+	"copias": 40315,
+	"bugs": 307,
+	"totalBranches": 3
+}
+```
+
+---
+
+## 🧪 Como testar no Insomnia
+
+### Passo a passo:
+
+1. Abra o **Insomnia**
+2. Vá em **Create > Request Collection > Http Request**
+3. Selecione a requisição do tipo GET
+4. Insita a seguinte url "http://localhost:3000/monitor"
+
+A resposta será exibida em formato JSON com todos os dados monitorados.
+
+---
+
+## 🛠 Como alterar o repositório monitorado
+
+No arquivo `monitorController.js`, altere diretamente as variáveis:
+
+```js
+const repoOwner = 'usuario-do-github';
+const repoName = 'nome-do-repositorio';
+```
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por João Pedro, Luís Antônio, Matheus, Daniel, Paulo e Roberto.
