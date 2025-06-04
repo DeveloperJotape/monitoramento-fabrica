@@ -150,6 +150,17 @@ front/src/
     └── index.ts                 # Definições TypeScript
 ```
 
+## Prints do sistema
+
+### Frontend
+```
+https://prnt.sc/9tnnMtoIjNZv
+```
+
+### Backend
+```
+https://prnt.sc/C2q2foSCeqha
+```
 ---
 
 💡 **Projeto desenvolvido para fins acadêmicos - Demonstração de conceitos de desenvolvimento web full-stack**
